@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesin Turing</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      color: #333;
+      margin: 20px;
+      line-height: 1.8;
+    }
+
+    h1 {
+      color: #2c3e50;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-weight: normal;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .back-button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Mesin Turing</h1>
+    <h2>
+      Mesin Turing adalah model komputasi teoretis yang ditemukan oleh Alan Turing, berfungsi sebagai model ideal untuk melakukan perhitungan matematis. Walaupun model ideal ini diperkenalkan sebelum komputer nyata dibangun, model ini tetap diterima kalangan ilmu komputer sebagai model komputer yang sesuai untuk menentukan apakah suatu fungsi dapat selesaikan oleh komputer atau tidak (menentukan computable function). Mesin Turing terkenal dengan ungkapan "Apapun yang bisa dilakukan oleh Mesin Turing pasti bisa dilakukan oleh komputer."
+    </h2>
+
+    <h2>
+      Sebuah mesin turing terdiri atas barisan sel tersusun berupa pita yang dapat bergerak maju mundur, komponen aktif baca/tulis pita yang memiliki status perhitungan serta dapat mengubah/menulisi sel aktif yang ada di pita tadi, dan suatu kumpulan instruksi bagaimana komponen baca/tulis ini harus melakukan modifikasi terhadap sel aktif pada pita, serta bagaimana menggerakkan pita tersebut. Pada setiap langkah dalam komputasi, mesin ini akan dapat mengubah isi dari sel yang aktif, mengubah status dari komponen baca/tulis, dan mengubah posisi pita ke kiri atau ke kanan.
+    </h2>
+
+    <h2>
+      Jauh sebelum lahirnya program komputer, Alan Turing pada tahun 1936 telah mengeluarkan gagasannya berupa model mesin abstrak sebagai alat mekanik untuk mengerjakan prosedur yang efektif. Model ini disebut Mesin Turing. Mesin turing dapat diadaptasi untuk mensimulasi logika dari setiap algoritma oleh karena itu cara kerja mesin turing adalah ekivalen dengan cara kerja komputer sekarang ini dan mesin turing juga ekivalen dengan problema komputasi matematika. Mesin turing tidak ditujukan sebagai teknologi komputasi praktis tetapi lebih sebagai eksperimen pemikiran yang mewakili sebuah mesin komputasi. Mesin turing membantu para ilmuan komputer memahami batas-batas komputasi mekanis.
+    </h2>
+
+    <h2>
+      Sebagai input dari mesin turing adalah kata atau untai atas suatu alfabet T. Mesin turing berhenti dengan keadaan menerima atau menolak untai. Kadang-kadang terjadi pula perulangan atau looping tak terhingga.
+    </h2>
+
+    <h1>Komponen Mesin Turing</h1>
+    <ul>
+      <li><strong>Tape:</strong> Tempat diletakannya inputan yang berupa kata/untai.</li>
+      <li><strong>Head:</strong> Membaca dan menulisi sel pita mesin Turing, bisa bergerak ke kiri atau ke kanan.</li>
+      <li><strong>Finite State Control (FSC):</strong> Otak dari TM, diimplementasikan dari algoritma pengenalan kalimat.</li>
+    </ul>
+
+    <h1>Definisi Mesin Turing</h1>
+    <h2>Mesin turing didefinisikan sebagai 7 tuple M = { Q, S, G, S, F, Ь, ∆ } dengan:</h2>
+    <ul>
+      <li><strong>Q:</strong> Himpunan hingga state</li>
+      <li><strong>S:</strong> Alfabet input</li>
+      <li><strong>G:</strong> Simbol pada pita (meliputi pula blank)</li>
+      <li><strong>S:</strong> State awal, S ∈ Q</li>
+      <li><strong>F:</strong> State akhir, F ∈ Q</li>
+      <li><strong>Ь:</strong> Simbol kosong (blank)</li>
+      <li><strong>∆:</strong> Fungsi transisi</li>
+    </ul>
+
+    <h2>Contoh fungsi transisi:<br>
+      ∆(qi, a) = (qj, b, X) <br>
+      Artinya: Mesin dalam keadaan <strong>qi</strong> membaca simbol <strong>a</strong>, lalu berubah ke state <strong>qj</strong>, menulis simbol <strong>b</strong>, dan bergerak ke arah <strong>X</strong> (R untuk kanan, L untuk kiri).
+    </h2>
+
+    <h1>Contoh Mesin Turing Sederhana</h1>
+    <h2>
+      Diberikan sebuah string seperti 0111...110, tentukan apakah jumlah angka 1 di antara dua angka 0 adalah genap atau ganjil.
+    </h2>
+    <ul>
+      <li>Jika jumlah angka 1 genap → tulis 0 pada tape.</li>
+      <li>Jika jumlah angka 1 ganjil → tulis 1 pada tape.</li>
+    </ul>
+    <h2>State yang digunakan: Start, Even, Odd. Aturan transisi:</h2>
+    <ul>
+      <li>Start membaca 0 → ke Even, hapus 0, geser kanan</li>
+      <li>Even membaca 1 → ke Odd, hapus 1, geser kanan</li>
+      <li>Odd membaca 1 → ke Even, hapus 1, geser kanan</li>
+      <li>Even membaca 0 → ke Halt, tulis 0, tetap</li>
+      <li>Odd membaca 0 → ke Halt, tulis 1, tetap</li>
+    </ul>
+
+    <h1>Deteksi Palindrome</h1>
+    <h2>
+      Palindrome adalah kata atau kalimat yang sama jika dibaca dari depan atau dari belakang. Contoh kata palindrome: <strong>rotor, civic, madam, level, kapak</strong>. Kalimat palindrome: <em>No lemon no melon</em>, <em>No devil lived on</em>.
+    </h2>
+
+    <h2>
+      Untuk alfabet terbatas seperti A dan B, contoh:
+      <ul>
+        <li>"ABAABBA" → <strong>bukan</strong> palindrome</li>
+        <li>"BABBAB" → <strong>adalah</strong> palindrome</li>
+      </ul>
+    </h2>
+
+    <h2>
+      Format transisi untuk simulasi Mesin Turing:
+      <br>
+      <code>1, _, 2, #, ></code><br>
+      <code>2, A, 3, A, ></code><br>
+      Karakter:
+      <ul>
+        <li><strong>_</strong>: blank</li>
+        <li><strong>H</strong>: Halt</li>
+        <li><strong>&lt;, &gt;</strong>: arah gerakan</li>
+      </ul>
+    </h2>
+
+
+    <h1>Referensi</h1>
+    <ul>
+      <li>
+        Wikipedia, Mesin Turing
+        <br>
+        <a href="https://id.wikipedia.org/wiki/Mesin_Turing" target="_blank">
+          Baca selengkapnya di sumber asli
+        </a>
+      </li>
+    </ul>
+
+    <button class="back-button" onclick="window.history.back()">← Kembali</button>
+  </div>
+</body>
+</html>
